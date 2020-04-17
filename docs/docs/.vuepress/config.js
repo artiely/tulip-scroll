@@ -9,7 +9,7 @@ module.exports = {
     nav: require("./config/nav"),
     sidebar: require("./config/sidebar"),
     lastUpdated: "Last Updated",
-    repo: "",
+    repo: "https://github.com/artiely/tulip-scroll",
     editLinks: false
   },
   plugins: ["copy-code"],
