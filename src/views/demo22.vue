@@ -104,7 +104,7 @@ export default {
   line-height: 50px;
   background: #abcdef;
   color: #fff;
-  width: 50%;
+  width: 100%;
   overflow: hidden;
 }
 .pyq {
