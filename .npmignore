@@ -1,0 +1,20 @@
+# 忽略目录
+components/
+src/
+dist/
+public/
+docs/
+docs/
+node_modules
+.history
+
+# 忽略指定文件
+vue.config.js
+babel.config.js
+*.map
+.editorconfig
+.browserslistrc
+.eslintrc
+.gitignore
+deploy.sh
+package-lock.json

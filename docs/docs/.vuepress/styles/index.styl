@@ -1,0 +1,48 @@
+// **************  Start  **************
+// you can comment out the following code snippet.
+
+.home
+	.hero
+		img
+			max-height 220px !important
+		h1
+			font-size 2.6rem !important
+		.action-button
+			padding 0.4rem 1.4rem !important	
+	.footer
+		padding 1rem !important
+
+.sidebar 
+	> .sidebar-links 
+		> li 
+			> a
+				&.sidebar-link
+					font-size 1em !important
+					line-height: 1.4 !important
+					font-weight normal !important
+					&.active
+						font-weight bold !important
+.sidebar 
+	> .sidebar-links
+		> li:not(:first-child)
+			margin-top auto !important
+
+// reset scrollbar
+::-webkit-scrollbar{width:6px;height:1px}
+::-webkit-scrollbar-thumb{background:transparent}
+::-webkit-scrollbar-track{background:transparent}
+			
+// ***************  End  ***************
+
+/* **********************************************
+
+	Add Extra Styles
+	https://vuepress.vuejs.org/config/#index-styl
+
+********************************************** */
+
+// You can add extra styles from the following (using stylus or css)
+
+.navbar{
+	z-index 9999
+}
