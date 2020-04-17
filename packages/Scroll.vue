@@ -355,7 +355,6 @@ export default {
       let toBottom = vm.toBottom()
       if (isUp && toBottom <= vm.below.threshold && vm.belowState !== 'loading') {
         vm.preventBounce(e)
-        vm.setOverflowScrolling('auto')
         vm.scrollLoad()
       }
       this.$emit('scroll', { e, scrollTop, scrollHeight })
