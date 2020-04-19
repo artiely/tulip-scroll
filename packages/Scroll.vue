@@ -795,25 +795,27 @@ export default {
       let vm = this
       vm.isScrollTo = true
       vm.animate = Animation(
-        from,
-        to,
-        function (value, flag) {
-          cb && cb(value, flag)
-          if (vm.animateIds.length) {
-            vm.aboveDom.style.height = value + 'px'
-            vm.aboveWrapHeight = value
-          }
-          if (flag) {
-            if (to === 0) {
-              vm.setAboveState('over')
-            } else {
-              vm.setAboveState('loading')
+        {
+          from,
+          to,
+          callback: function (value, flag) {
+            cb && cb(value, flag)
+            if (vm.animateIds.length) {
+              vm.aboveDom.style.height = value + 'px'
+              vm.aboveWrapHeight = value
             }
-            cancelAnimationFrame(vm.animate)
-          }
-        },
-        'easeOut',
-        200
+            if (flag) {
+              if (to === 0) {
+                vm.setAboveState('over')
+              } else {
+                vm.setAboveState('loading')
+              }
+              cancelAnimationFrame(vm.animate)
+            }
+          },
+          duration: 200,
+          easing: 'easeOut'
+        }
       )
       vm.animateIds.push(vm.animate)
       return vm.animate
