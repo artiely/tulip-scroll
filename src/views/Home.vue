@@ -1,9 +1,6 @@
 <template>
   <tulip-scroll>
     <div class="home">
-      <!-- <router-link class="link" to="/demo7">模仿微信下拉小程序</router-link>
-    <router-link class="link" to="/demo12">参数</router-link>
-    <router-link class="link" to="/demo13">自定义</router-link> -->
       <van-collapse v-model="activeNames">
         <van-collapse-item
           title="基础示例"
@@ -110,6 +107,7 @@
           </van-cell-group>
         </van-collapse-item>
       </van-collapse>
+      <!-- 示例部分组件依赖于vantui 希望不会给你带来困扰 -->
     </div>
   </tulip-scroll>
 </template>
