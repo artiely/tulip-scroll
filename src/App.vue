@@ -8,6 +8,7 @@
 <style lang="less">
 *{
   padding: 0;margin: 0;
+  user-select: none;
 }
 html,body,#app{
   background:#eee;

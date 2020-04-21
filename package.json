@@ -8,7 +8,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "docs": "cd /docs && vuepress dev docs",
+    "docs": "npx vuepress dev docs --temp docs/.temp",
     "lib": "vue-cli-service build --target lib --name tulip-scroll --dest lib packages/index.js"
   },
   "keyword": [
@@ -22,6 +22,7 @@
   ],
   "dependencies": {},
   "devDependencies": {
+    "vuepress": "^1.4.0",
     "@vue/cli-plugin-babel": "^3.12.0",
     "@vue/cli-plugin-eslint": "^3.12.0",
     "@vue/cli-service": "^3.12.0",
@@ -46,6 +47,7 @@
     "vue-template-compiler": "^2.6.10",
     "vuepress-plugin-copy-code": "0.0.1",
     "vuepress-theme-antdocs": "^1.0.0",
+    "vuepress-theme-antdocs-pro": "^1.0.0",
     "vuex": "^3.0.1"
   },
   "gitHooks": {},
