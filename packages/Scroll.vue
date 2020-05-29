@@ -197,7 +197,6 @@ export default {
       isBelowLoadingEnd: false,
       isBelowNoMore: false,
       isAboveNoMore: false,
-      // clientHeight: 0,
       animate: null// 当前的动画实例
     }
   },
@@ -465,7 +464,7 @@ export default {
      * aboveWrapHeight 为当前下拉的高度
      * 情况分析：
      *  下拉没超过h的时候直接回弹
-     *  下拉超过h的时候判断是不是有回调TODO: 没有直接回弹，有回调执行回调的逻辑
+     *  下拉超过h的时候判断是不是有回调
      */
     resetAboveHeightToZero () {
       let vm = this
@@ -521,7 +520,6 @@ export default {
        * 如果用户定义了this.above.pullingEnd，this.skipAboveDelay=undefined或者用户手动返回true
        */
       this.hasAboveCallback = false // 取消标记
-      // if (!this.isAboveNoMore) {
       // 执行下拉的回调
 
       this.skipAboveDelay = this.above.pullingEnd(this.endAboveScroll)
@@ -536,7 +534,6 @@ export default {
     /**
      *
      * @param {*} doneFlag 默认false下拉加载时没有更多数据 --no more--
-     * TODO:重新开始下拉加载需要调用方法
      */
     endAboveScroll (doneFlag) {
       var vm = this
@@ -625,7 +622,6 @@ export default {
       let targetHeight = this.above.hoverHeight || this.above.offset
       if (vm.aboveState !== 'hovering') {
         vm.setAboveState('loading')
-        // vm.setAboveState('hovering')
       }
       let finalHeight = this.skipAboveDelay ? 0 : targetHeight
       vm.isScrollTo = true
@@ -641,9 +637,6 @@ export default {
         } else {
           this.raf(this.aboveWrapHeight, finalHeight, (value, flag) => {
             this.aboveWrapHeight = value
-            // if(flag){
-            //   vm.setAboveState('loading')
-            // }
           })
         }
       }

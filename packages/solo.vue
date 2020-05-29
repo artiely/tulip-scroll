@@ -3,7 +3,7 @@
     <template>
       <spinner
         ref="svg"
-        v-show="!textShow&&belowState !== 'over'"
+        v-show="!textShow && belowState !== 'over'"
         :style="{opacity:y/offset}"
       />
       <div v-show="textShow">{{noMoreText}}</div>

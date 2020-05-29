@@ -10,7 +10,7 @@ module.exports = {
   //     filename: 'index.html'
   //   }
   // },
-  // css: { extract: false},
+  css: { extract: false},
   chainWebpack: config => {
     config.module
       .rule('js')
