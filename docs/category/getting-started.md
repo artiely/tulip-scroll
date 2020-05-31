@@ -32,16 +32,6 @@ vue.use(TulipScroll)
     </tulip-scroll>
   </div>
 </template>
-
-<script>
-export default {
-}
-</script>
-
-<style lang="less" scoped>
-
-</style>
-
 ```
 ## 组件内使用
 ```vue
@@ -60,9 +50,4 @@ export default {
   }
 }
 </script>
-
-<style lang="less" scoped>
-
-</style>
-
 ```
