@@ -5,7 +5,7 @@
       <template v-slot:above>
         <div class="abovewarp-progress abovewarp-loading" style="height:50px;display:inline-block;margin:0 auto;" ref="meituan"></div>
       </template>
-      <van-divider>模仿旧版美团</van-divider>
+      <van-divider>模仿旧版美团，下拉查看效果</van-divider>
     </tulip-scroll>
   </div>
 </template>

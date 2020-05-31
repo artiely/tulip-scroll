@@ -118,7 +118,7 @@ export default {
   name: 'home',
   data () {
     return {
-      activeNames: ['1', '2']
+      activeNames: ['2']
     }
   }
 }

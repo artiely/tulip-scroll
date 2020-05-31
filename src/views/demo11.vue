@@ -2,7 +2,7 @@
   <div>
     <van-nav-bar
       fixed
-      title="基础属性设置"
+      title="模拟网易云村刷新"
       left-text="返回"
       left-arrow
       @click-left="$router.replace('/')"

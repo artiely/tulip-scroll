@@ -5,7 +5,7 @@
       @init="init"
     >
       <van-nav-bar
-        title="无参数示例"
+        title="模仿JD首页刷新"
         left-text="返回"
         left-arrow
         @click-left="$router.replace('/')"
@@ -17,7 +17,7 @@
           <span v-else>松手得惊喜</span>
         </div>
       </template>
-      <van-divider>模仿JD首页</van-divider>
+      <van-divider>模仿JD首页，多级下拉刷新</van-divider>
     </tulip-scroll>
   </div>
 </template>

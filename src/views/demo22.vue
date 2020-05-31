@@ -2,7 +2,7 @@
   <div>
     <van-nav-bar
       fixed
-      title="模仿头条类"
+      title="模仿头条类刷新"
       left-text="返回"
       left-arrow
       @click-left="$router.replace('/')"
@@ -104,8 +104,21 @@ export default {
   line-height: 50px;
   background: #abcdef;
   color: #fff;
-  width: 100%;
+  width: 30%;
+  margin: 0 auto;
   overflow: hidden;
+}
+.over{
+  animation: width 0.2s;
+  width: 100%;
+}
+@keyframes width {
+  0% {
+    width: 30%;
+  }
+  100% {
+    width: 100%;
+  }
 }
 .pyq {
   width: 30px;
