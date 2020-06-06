@@ -244,24 +244,48 @@ export default {
     initScroll () {
       let vm = this
       vm.scrollDom.addEventListener('mousedown', vm.touchstartEvent) // PC端鼠标事件
+      vm.$once('hook:destroyed',()=>{
+        vm.scrollDom.removeEventListener('mousedown', vm.touchstartEvent)
+      })
       vm.scrollDom.addEventListener('touchstart', vm.touchstartEvent, {
         passive: false
       }) // 移动端手指事件
+      vm.$once('hook:destroyed',()=>{
+        vm.scrollDom.removeEventListener('touchstart', vm.touchstartEvent)
+      })
       vm.scrollDom.addEventListener('touchmove', vm.touchmoveEvent, {
         passive: false
       })
+      vm.$once('hook:destroyed',()=>{
+        vm.scrollDom.removeEventListener('touchmove', vm.touchmoveEvent)
+      })
       // 移动端手指的滑动事件
       vm.scrollDom.addEventListener('mouseup', vm.touchendEvent) // PC端鼠标抬起事件
+      vm.$once('hook:destroyed',()=>{
+        vm.scrollDom.removeEventListener('mouseup', vm.touchendEvent)
+      })
       vm.scrollDom.addEventListener('mouseleave', vm.touchendEvent) // PC端鼠标离开事件
+      vm.$once('hook:destroyed',()=>{
+        vm.scrollDom.removeEventListener('mouseleave', vm.touchendEvent)
+      })
       vm.scrollDom.addEventListener('touchend', vm.touchendEvent, {
         passive: false
       }) // 移动端手指事件
+      vm.$once('hook:destroyed',()=>{
+        vm.scrollDom.removeEventListener('touchend', vm.touchendEvent)
+      })
       vm.scrollDom.addEventListener('touchcancel', vm.touchendEvent, {
         passive: false
       }) // 移动端系统停止跟踪触摸
+      vm.$once('hook:destroyed',()=>{
+        vm.scrollDom.removeEventListener('touchcancel', vm.touchendEvent)
+      })
       vm.scrollDom.addEventListener('scroll', vm.scrollEvent, {
         passive: false
       }) // 移动端系统停止跟踪触摸
+      vm.$once('hook:destroyed',()=>{
+        vm.scrollDom.removeEventListener('scroll', vm.scrollEvent)
+      })
       // 部分安卓机在滑动时窗口会改变大小
       vm.$emit('init', vm)
     },
