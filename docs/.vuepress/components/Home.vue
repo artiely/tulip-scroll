@@ -183,7 +183,15 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less" >
+body,html,#app,.theme-container,.page {
+  height: 100%;
+  // background-color: #ddd!important;
+  // background: #ddd!important;
+}
+.theme-antdocs-content{
+  height: 100%;
+}
 .pic-list {
   margin-top: 80px;
   display: flex;
@@ -197,10 +205,12 @@ export default {
 }
 .home-box {
   height: 100%;
+  background: #000;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
+  bottom: 0;
   margin-left: -6rem;
   margin-right: -6rem;
   .flag {
@@ -228,7 +238,7 @@ export default {
     left: 0;
     width: 100%;
     .main-inner {
-      width: 1000px;
+      max-width: 1000px;
       margin: 0 auto;
     }
   }
