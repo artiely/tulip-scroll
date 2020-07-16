@@ -1,4 +1,4 @@
----
+<!-- ---
 home: true
 actionText: Get Started →
 actionLink: /category/
@@ -11,7 +11,8 @@ features:
 - title: Customizable
   details: All the necessary files have been created. You can add the functions you want directly to the configuration file.
 footer: MIT Licensed | Copyright © 2020 Artiely
----
+--- -->
 
+<Home/>
 
 <!-- heroImage: /assets/logo.png -->
