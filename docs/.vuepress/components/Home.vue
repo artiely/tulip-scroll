@@ -238,6 +238,7 @@ body,html,#app,.theme-container,.page {
     width: 100%;
     position: relative;
     z-index: 9;
+    overflow: hidden;
     .main-inner {
       padding: 0 6rem;
       max-width: 1000px;
