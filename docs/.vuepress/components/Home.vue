@@ -204,13 +204,12 @@ body,html,#app,.theme-container,.page {
   }
 }
 .home-box {
-  height: 100%;
-  background: #000;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  background: #5c81b9;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  // right: 0;
+  // bottom: 0;
   margin-left: -6rem;
   margin-right: -6rem;
   .flag {
@@ -233,11 +232,14 @@ body,html,#app,.theme-container,.page {
     margin: 0 auto 0px;
   }
   .main-box {
-    position: absolute;
-    top: 100px;
+    // position: absolute;
+    padding-top: 100px;
     left: 0;
     width: 100%;
+    position: relative;
+    z-index: 9;
     .main-inner {
+      padding: 0 6rem;
       max-width: 1000px;
       margin: 0 auto;
     }
@@ -511,7 +513,7 @@ label:active {
   }
 
   .gastly-shadow-container {
-    // filter: contrast(2400%) hue-rotate(272deg) saturate(50%);
+    filter: contrast(2400%) hue-rotate(272deg) saturate(50%);
     position: absolute;
     top: -10rem;
     left: -10rem;
