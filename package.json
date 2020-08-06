@@ -21,7 +21,9 @@
     "infinite-scroll",
     "infinite-loading"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "@vue/composition-api": "^1.0.0-beta.6"
+  },
   "devDependencies": {
     "vuepress": "^1.4.0",
     "@vue/cli-plugin-babel": "^3.12.0",

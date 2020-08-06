@@ -52,6 +52,9 @@ Vue.use(SwitchCell)
 Vue.use(Switch)
 Vue.use(Collapse).use(CollapseItem)
 Vue.use(Cell).use(CellGroup)
+
+import VueCompositionAPI from '@vue/composition-api'
+Vue.use(VueCompositionAPI)
 new Vue({
   router,
   render: h => h(App)
