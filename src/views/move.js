@@ -22,6 +22,9 @@ export function useMovePosition() {
     window.addEventListener('touchmove', update, {
       passive: false,
     })
+    document.ondragstart = () => {
+      return false
+    }
   })
 
   onUnmounted(() => {
