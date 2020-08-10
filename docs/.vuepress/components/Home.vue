@@ -100,6 +100,7 @@
         <p class="desc">主流APP案例, 丰富经典, 随心定制, 轻松拓展</p>
         <p class="desc">自由灵活的api, 可让您快速自定义真正属于自己的下拉上拉组件</p>
         <p class="desc">完美支持android, iOS, 各手机浏览器, 兼容PC主流浏览器</p>
+        <p class="desc">自动记录滚动条的位置</p>
         <p></p>
         <a-button
           type="primary"
