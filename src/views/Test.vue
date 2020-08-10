@@ -1,15 +1,21 @@
 <template>
-  <div>
+  <div ref="scroll" class="tulip-scroller" >
+    <div style="height:100px;background:#ddd;position:relative;z-index:1"></div>
     <div
       style="background:red"
-      :style="{height:state.aboveWapperHeight+'px'}"
+      ref="above"
+      class="tulip-scroller-hardware"
     ></div>
     <span style="margin-right:10px">按下时的位置{{state}}</span>
+    <div
+      v-for="i in 100"
+      :key="i"
+    >{{i}}</div>
   </div>
 </template>
 
 <script>
-import { ref, toRefs, reactive, watchEffect, watch, computed } from '@vue/composition-api'
+import { ref, toRefs, reactive, watchEffect, watch, computed, onMounted, onUnmounted } from '@vue/composition-api'
 import { useStartPosition } from './mouse'
 import { useMovePosition } from './move'
 import Animation from '../../packages/animate'
@@ -39,7 +45,9 @@ const aboveOpt = {
   } // 下拉结束那一刻（包含松开手指和自动结束）
 }
 export default {
-  setup (props, context) {
+  setup (props, ctx) {
+    console.log("setup -> ctx", ctx)
+
     // 获取其实位置
     const { x: sx, y: sy, t } = useStartPosition()
     // 获取移动的位置
@@ -55,29 +63,32 @@ export default {
       aboveWapperHeight
     })
 
-    watch(state, (val, ovl) => {
-      // console.log("setup -> val,ovl", val.my,ovl,preY.value)
-      // console.log("setup -> state", JSON.stringify(state))
-      // let diff = val.my-ovl.my
-      // console.log("setup -> diff", diff)
-      // if (state.sy < state.my) {
-      //   // console.log('ww')
-      // }
-    })
-
-    watch(preY, (val, ovl) => {
+    
+    onMounted(() => {
+      const aboveDom = ctx.refs.above
+      watch(preY, (val, ovl) => {
       let diff = val - (ovl ? ovl : val)
-      if(state.aboveWapperHeight<0)return
+      if (state.aboveWapperHeight < 0) return
       if (state.aboveWapperHeight < aboveOpt.offset) {
         state.aboveWapperHeight += diff * aboveOpt.inOffsetRate
       } else {
         state.aboveWapperHeight += diff * aboveOpt.outOffsetRate
       }
+      requestAnimationFrame(()=>{
+         aboveDom.style.height = state.aboveWapperHeight + 'px'
+      })
     })
-
-    window.addEventListener('touchend', resetheight)
-
-    function resetheight () {
+      let scrollDom = ctx.refs.scroll
+    scrollDom.style.webkitOverflowScrolling = 'auto'
+      window.addEventListener('touchend', resetheight)
+      
+      scrollDom.addEventListener('touchmove', bounceTouchmove, {
+        passive: false
+      })
+      scrollDom.addEventListener('touchstart', bounceTouchmove, {
+        passive: false
+      })
+      function resetheight () {
       console.log('9999')
       let animate = Animation(
         {
@@ -86,6 +97,7 @@ export default {
           callback: function (value, flag) {
             state.aboveWapperHeight = value
             preY.value = 0
+            aboveDom.style.height = value + 'px'
             if (flag) {
               cancelAnimationFrame(animate)
             }
@@ -95,6 +107,83 @@ export default {
         }
       )
     }
+    })
+
+
+    onUnmounted(() => {
+      window.removeEventListener('touchend', resetheight)
+    })
+
+
+
+    function bounceTouchmove (e) {
+      // alert(2)
+      // e.preventDefault()
+      // console.log("bounceTouchmove -> e", e)
+      // var ctx = this
+
+      var el = e.target
+      var isPrevent = true
+      while (el !== document.body && el !== document) {
+        // console.log("bounceTouchmove -> el", el)
+        // Ignore range input element
+        // if (el.nodeName === 'INPUT' && el.getAttribute('type') === 'range') {
+        //   return
+        // }
+        var cls = el.classList
+        console.log("bounceTouchmove -> cls", cls)
+        if (cls) {
+          if (cls.contains('tulip-scroller') || cls.contains('scroll-touch')) {
+            isPrevent = false // 如果是指定条件的元素,则无需拦截touchmove事件
+            break
+          } else if (
+            cls.contains('scroll-touch-x') ||
+            cls.contains('scroll-touch-y')
+          ) {
+            // 如果配置了水平或者垂直滑动
+            var curX = e.touches ? e.touches[0].pageX : e.clientX // 当前第一个手指距离列表顶部的距离x
+            var curY = e.touches ? e.touches[0].pageY : e.clientY // 当前第一个手指距离列表顶部的距离y
+
+            if (!ctx.preWinX) ctx.preWinX = curX // 设置上次移动的距离x
+            if (!ctx.preWinY) ctx.preWinY = curY // 设置上次移动的距离y
+
+            // 计算两点之间的角度
+            var x = Math.abs(ctx.preWinX - curX)
+            var y = Math.abs(ctx.preWinY - curY)
+            var z = Math.sqrt(x * x + y * y)
+
+            ctx.preWinX = curX // 记录本次curX的值
+            ctx.preWinY = curY // 记录本次curY的值
+
+            if (z !== 0) {
+              var angle = (Math.asin(y / z) / Math.PI) * 180 // 角度区间 [0,90]
+              if (
+                (angle <= 45 && cls.contains('scroll-touch-x')) ||
+                (angle > 45 && cls.contains('scroll-touch-y'))
+              ) {
+                isPrevent = false // 水平滑动或者垂直滑动,不拦截touchmove事件
+                break
+              }
+            }
+          }
+        }
+        el = el.parentNode // 继续检查其父元素
+        console.log("bounceTouchmove -> el", el)
+      }
+
+      // 拦截touchmove事件:是否可以被禁用&&是否已经被禁用
+      if (
+        isPrevent &&
+        e.cancelable &&
+        !e.defaultPrevented &&
+        typeof e.preventDefault === 'function'
+      ) {
+        // alert(1)
+        e.preventDefault()
+      }
+    }
+
+    
     // 其他逻辑...
     return {
       state,
@@ -104,4 +193,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+* {
+  margin: 0;
+  padding: 0;
+}
+.tulip-scroller{
+  position: relative;
+  height:100vh;overflow-y:scroll;background:yellow
+}
+/*启用硬件加速:使动画渲染流畅,解决部分手机闪白屏问题,在下拉刷新和上拉加载触发时启用,结束后移除,避免滥用导致其他兼容性问题*/
+.tulip-scroller-hardware {
+  height: 50px;
+  position: relative;
+  margin-top: -100px;
+  padding-top: 100px;
+  transform: translateZ(0);
+  -webkit-overflow-scrolling: auto;
+  overscroll-behavior-y: none;
+}
 </style>

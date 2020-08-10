@@ -5,18 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
       name="viewport"
-      content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=yes,minimal-ui"
+      content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no,minimal-ui"
     />
     <!-- 当您点击一个元素时，Windows Phone上的IE10和IE11会有一个小的点击突出显示。添加此元标记将其删除 -->
     <meta name="msapplication-tap-highlight" content="no" />
+    <!-- iphone设备中的safari私有meta标签，它表示：允许全屏模式浏览 -->
+    <meta content="yes" name="apple-mobile-web-app-capable"> 
+    <!-- meta标签也是iphone的私有标签，它指定的iphone中safari顶端的状态条的样式； -->
+    <!-- 默认值为default（白色），可以定为black（黑色）和black-translucent（灰色半透明）。
+注意：若值为“black-translucent”将会占据页面px位置，浮在页面上方
+（会覆盖页面20px高度–iphone4和itouch4的Retina屏幕为40px）。 -->
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">   
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title>scroll</title>
   </head>
-  <body>
+  <!-- ontouchmove="event.preventDefault()" -->
+  <body style="background:#999" >
     <noscript>
       <strong>We're sorry but scroll doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <div id="app"></div>
+    <div id="app" ></div>
     <!-- built files will be auto injected -->
   </body>
 </html>

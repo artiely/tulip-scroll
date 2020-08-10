@@ -16,13 +16,16 @@ export function useStartPosition() {
   })
 
   function update(e) {
+    // e.preventDefault()
     pos.x = e.touches ? e.touches[0].pageX : e.clientX
     pos.y = e.touches ? e.touches[0].pageY : e.clientY
     pos.t = e.timeStamp ? e.timeStamp : 0
   }
 
   onMounted(() => {
-    window.addEventListener('touchstart', update)
+    window.addEventListener('touchstart', update,{
+      passive: false
+    })
     window.addEventListener('mousedown', update)
   })
 
