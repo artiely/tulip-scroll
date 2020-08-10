@@ -205,7 +205,7 @@ body,html,#app,.theme-container,.page {
   }
 }
 .home-box {
-  background: #5c81b9;
+  background: #5c81b954;
   // position: absolute;
   // top: 0;
   // left: 0;
