@@ -103,6 +103,10 @@
               title="模仿头条类/demo22"
               is-link
               to="/demo22"
+            /><van-cell
+              title="模仿头条类/demo23"
+              is-link
+              to="/demo23"
             />
           </van-cell-group>
         </van-collapse-item>

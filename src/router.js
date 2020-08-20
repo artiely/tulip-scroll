@@ -117,6 +117,11 @@ export default new Router({
       path: '/demo22',
       name: 'demo22',
       component: () => import(/* webpackChunkName: "demo22" */ './views/demo22.vue')
-    }
+    },
+    // {
+    //   path: '/demo23',
+    //   name: 'demo23',
+    //   component: () => import(/* webpackChunkName: "demo23" */ './views/demo23.vue')
+    // }
   ]
 })

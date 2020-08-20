@@ -863,6 +863,7 @@ input {
 .tulip-scroller-hardware {
   -webkit-overflow-scrolling: auto;
   overscroll-behavior-y: none;
+  will-change: height;
 }
 .tulip-scroller-wrapper {
   position: absolute;

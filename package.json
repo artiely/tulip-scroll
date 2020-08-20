@@ -21,7 +21,9 @@
     "infinite-scroll",
     "infinite-loading"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "vue-virtual-scroller": "^1.0.10"
+  },
   "devDependencies": {
     "vuepress": "^1.4.0",
     "@vue/cli-plugin-babel": "^3.12.0",
