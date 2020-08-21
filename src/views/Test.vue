@@ -1,6 +1,6 @@
 <template>
   <div ref="scroll" class="tulip-scroller" >
-    <div style="height:100px;background:#ddd;position:relative;z-index:1"></div>
+    <!-- <div style="height:100px;background:#ddd;position:relative;z-index:1"></div> -->
     <div
       style="background:red"
       ref="above"
@@ -203,12 +203,13 @@ export default {
 }
 /*启用硬件加速:使动画渲染流畅,解决部分手机闪白屏问题,在下拉刷新和上拉加载触发时启用,结束后移除,避免滥用导致其他兼容性问题*/
 .tulip-scroller-hardware {
-  height: 50px;
+  height: 0;
   position: relative;
   margin-top: -100px;
   padding-top: 100px;
   transform: translateZ(0);
   -webkit-overflow-scrolling: auto;
   overscroll-behavior-y: none;
+  will-change: height;
 }
 </style>

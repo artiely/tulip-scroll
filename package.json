@@ -22,7 +22,7 @@
     "infinite-loading"
   ],
   "dependencies": {
-    "@vue/composition-api": "^1.0.0-beta.6"
+    "@vue/composition-api": "^1.0.0-beta.10"
   },
   "devDependencies": {
     "vuepress": "^1.4.0",
