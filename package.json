@@ -40,7 +40,7 @@
     "jquery": "^3.4.1",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
-    "lint-staged": "^8.1.5",
+    "lint-staged": "^16.4.0",
     "lodash": "^4.17.15",
     "preventoverscrolljs": "0.0.1",
     "vant": "^2.2.10",
